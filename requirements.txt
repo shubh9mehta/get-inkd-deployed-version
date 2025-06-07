@@ -1,0 +1,15 @@
+streamlit
+requests
+beautifulsoup4
+opencv-python
+rembg
+fpdf
+openai>=1.0.0
+python-dotenv
+Pillow
+numpy
+torch>=2.0.0
+gdown
+torchvision
+pycocotools
+onnxruntime
