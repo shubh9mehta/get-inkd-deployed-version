@@ -30,14 +30,14 @@ Recommend:
 
 Output only valid JSON with the following format:
 {{
-  "width_pct": 0.6,
+  "width_pct": 0.8,
   "height_pct": 0.8,
-  "comment": "Preserve aspect ratio. Fit logo to 60% width for compact product front."
+  "comment": "Preserve aspect ratio. Fit logo to 80% width for compact product front."
 }}
 """
 
     response = client.chat.completions.create(
-        model="gpt-4",
+        model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a visual branding AI."},
             {"role": "user", "content": prompt}

@@ -4,7 +4,7 @@ import numpy as np
 from utils.product_inspector_sam import get_sam_bounding_box, get_sam_bounding_box_and_angle
 from utils.logo_size_gpt import get_logo_scale_percentages
 
-# --- UTIL: Pad/crop to square container for nice Streamlit grid ---
+# UTIL: Pad/crop to square container
 def pad_image_to_square(image, box_size=320, bgcolor=(255,255,255,255)):
     if image.mode != "RGBA":
         image = image.convert("RGBA")
@@ -104,7 +104,7 @@ def overlay_logo_on_product(product_path, logo_path, output_path, pad_to_square=
 
     logo = logo.resize((logo_w, logo_h), Image.Resampling.LANCZOS)
 
-    # White-on-white: add smart border (now mask-following)
+    # White-on-white: add smart border
     product_crop = product.crop((box[0], box[1], box[2], box[3])).resize((logo_w, logo_h))
     if is_mostly_white(logo) and is_mostly_white(product_crop):
         logo = add_logo_border_auto(logo, product_crop, border=2)
@@ -124,7 +124,7 @@ def overlay_logo_on_product(product_path, logo_path, output_path, pad_to_square=
 
     product.paste(logo, (x_offset, y_offset), logo)
 
-    # -- Containerize for grid layout if requested
+
     if pad_to_square:
         final_img = pad_image_to_square(product, box_size=box_size, bgcolor=(255,255,255,255))
         final_img.save(output_path)
